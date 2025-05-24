@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Aslam Studioz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Aslam Studioz</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="gallery-filter">
+    <h1>Gallery</h1>
+    <div class="filters">
+      <button onclick="filterGallery('all')">All</button>
+      <button onclick="filterGallery('trip')">Trip</button>
+      <button onclick="filterGallery('nature')">Nature</button>
+      <button onclick="filterGallery('weddings')">Weddings</button>
+      <button onclick="filterGallery('videos')">Videos</button>
+    </div>
+  </section>
+
+  <section class="gallery-container">
+
+    <div class="gallery-item trip">
+      <img src="images/trip1.jpg" alt="trip Shot 1">
+    </div>
+
+    <div class="gallery-item nature">
+      <img src="images/nature1.jpg" alt="Nature Shot 1">
+    </div>
+
+    <div class="gallery-item weddings">
+      <img src="images/wedding1.jpg" alt="Wedding Shot 1">
+    </div>
+
+    <div class="gallery-item videos">
+      <video controls>
+        <source src="videos/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    
+    <!-- More items can be added here -->
+
+    <!-- wedding pic-->
+    <div class="gallery-item weddings">
+      <img src="images/wedding2.jpg" alt="Wedding Shot 2">
+    </div>
+
+     <div class="gallery-item weddings">
+      <img src="images/wedding3.jpg" alt="Wedding Shot 3">
+    </div>
+
+     <div class="gallery-item weddings">
+      <img src="images/wedding4.jpg" alt="Wedding Shot 4">
+    </div>
+
+     <div class="gallery-item weddings">
+      <img src="images/wedding5.jpg" alt="Wedding Shot 5">
+    </div>
+     <div class="gallery-item trip">
+      <img src="images/trip2.jpg" alt="trip Shot 2">
+    </div>
+  </section>
+
+  <footer>
+  <p>&copy; 2025 Aslam Studioz. All rights reserved.</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/aslamstudioz/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@aslamstudioz" target="_blank" rel="noopener">TikTok</a>
+  </div>
+  </footer>
+
+
+  <script>
+    function filterGallery(category) {
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

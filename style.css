@@ -1,0 +1,407 @@
+/* Updated style.css for Aslam Studioz - Neon Green Logo Color Matched */
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0a0a;
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #39FF14; /* neon green logo color */
+  letter-spacing: 2px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+}
+
+nav ul li a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #39FF14;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('images/hero-bg1.jpg') center/cover no-repeat;
+  filter: blur(6px);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px #39FF14;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* Intro Section */
+.intro {
+  display: flex;
+  max-width: 900px;
+  margin: 3rem auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.profile-pic {
+  width: 180px;
+  border-radius: 50%;
+  border: 4px solid #39FF14;
+}
+
+.bio h2 {
+  margin-bottom: 1rem;
+  color: #39FF14;
+}
+
+.bio p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Featured Work */
+.featured {
+  max-width: 900px;
+  margin: 3rem auto 5rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.featured h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #39FF14;
+}
+
+.gallery-preview {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.gallery-preview img {
+  width: 280px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+}
+
+.gallery-preview img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.9);
+}
+
+/* View More Button */
+.view-more {
+  margin-top: 2rem;
+}
+
+.view-more .btn {
+  background: #39FF14;
+  color: #111; /* darker text for contrast */
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background 0.3s ease;
+}
+
+.view-more .btn:hover {
+  background: #2ecc11;
+}
+
+/* Gallery Filters */
+.gallery-filter {
+  text-align: center;
+  margin: 3rem 1rem 1rem;
+  color: #39FF14;
+}
+
+.filters button {
+  background: transparent;
+  border: 2px solid #39FF14;
+  color: #39FF14;
+  padding: 0.6rem 1.3rem;
+  margin: 0 0.5rem;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters button:hover,
+.filters button:focus {
+  background: #39FF14;
+  color: #111;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+
+.gallery-item {
+  flex: 1 1 280px;
+  max-width: 280px;
+  height: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+  background: #1a1a1a;
+}
+
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Contact Section */
+.contact-section h1 {
+  text-align: center;
+  margin: 3rem 0 2rem;
+  font-size: 2.8rem;
+  color: #39FF14;
+  text-shadow: 0 0 10px #39FF14;
+}
+
+.contact-form {
+  max-width: 450px;
+  margin: 0 auto 4rem;
+  background: #1a1a1a;
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.7);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #39FF14;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: #333;
+  color: #eee;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background: #39FF14;
+  color: #111;
+  outline: none;
+  box-shadow: 0 0 10px #39FF14;
+}
+
+.contact-form button {
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+  background: #39FF14;
+  color: #111;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 5px 15px rgba(57, 255, 20, 0.7);
+}
+
+.contact-form button:hover {
+  background: #2ecc11;
+  box-shadow: 0 7px 20px rgba(57, 255, 20, 0.9);
+}
+
+/* About Page */
+.about-container {
+  max-width: 800px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #1f1f1f;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+  color: #eee;
+}
+
+.about-container h1 {
+  color: #39FF14;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-shadow: 0 0 8px #39FF14;
+}
+
+.about-container p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  text-align: justify;
+  letter-spacing: 0.03em;
+  margin-bottom: 1.3rem;
+}
+
+.about-highlight {
+  color: #39FF14;
+  font-weight: 700;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #1a1a1a;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-pic {
+    margin-bottom: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+/* Neon glow animation only on text-shadow (glow), letters stay white */
+@keyframes neonGlowPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #39FF14,
+      0 0 10px #39FF14,
+      0 0 20px #2ecc71,
+      0 0 30px #27ae60;
+  }
+  50% {
+    text-shadow:
+      0 0 10px #39FF14,
+      0 0 20px #39FF14,
+      0 0 30px #2ecc71,
+      0 0 40px #27ae60;
+  }
+}
+
+/* Logo style */
+.logo {
+  color: white;              /* Letter color white */
+  animation: neonGlowPulse 3s ease-in-out infinite;
+}
+
+/* Buttons glow with white letters too */
+.view-more .btn,
+.filters button,
+.contact-form button {
+  color: white;
+  animation: neonGlowPulse 4s ease-in-out infinite;
+  box-shadow: 0 0 8px #39FF14;
+  transition: box-shadow 0.3s ease;
+}
+
+.view-more .btn:hover,
+.filters button:hover,
+.contact-form button:hover {
+  box-shadow: 0 0 20px #39FF14, 0 0 40px #2ecc71;
+}
+.social-links {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* fotter social media css*/
+
+.social-links a {
+  background: #39ff14; /* Neon Green */
+  color: #ffffff;       /* Black text for contrast */
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 5px #39ff14, 0 0 20px #39ff14;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #6aff4c;
+  box-shadow: 0 0 25px #39ff14, 0 0 50px #39ff14;
+  transform: translateY(-3px) scale(1.05);
+}
