@@ -8,16 +8,17 @@
 </head>
 <body>
   <header>
-    <div class="logo">Aslam Studioz</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <a href="index.html" class="logo">Aslam Studioz</a>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <nav id="navMenu">
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
   <section class="gallery-filter">
     <h1>Gallery</h1>
@@ -83,18 +84,95 @@
   </footer>
 
 
-  <script>
-    function filterGallery(category) {
-      const items = document.querySelectorAll('.gallery-item');
-      items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-  </script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("open");
+  }
+
+  // Auto-close menu when a nav link is clicked
+  document.querySelectorAll("#navMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.getElementById("navMenu").classList.remove("open");
+    });
+  });
+</script>
+
+
+
+
+<!-- Lightbox Overlay -->
+<div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
+  <img id="lightboxImage" class="lightbox-image" src="" alt="">
+  <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage()">&#10094;</button>
+  <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage()">&#10095;</button>
+</div>
+
+<style>
+.lightbox-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  flex-direction: column;
+}
+.lightbox-image {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.8);
+}
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: none;
+  color: #39FF14;
+  border: none;
+  cursor: pointer;
+  z-index: 10001;
+  padding: 1rem;
+}
+.lightbox-btn.prev { left: 5%; }
+.lightbox-btn.next { right: 5%; }
+</style>
+
+<script>
+let currentImageIndex = 0;
+let images = [];
+
+document.addEventListener("DOMContentLoaded", () => {
+  images = Array.from(document.querySelectorAll(".gallery-preview img, .gallery-container img"));
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => openLightbox(index));
+  });
+});
+
+function openLightbox(index) {
+  currentImageIndex = index;
+  document.getElementById("lightboxImage").src = images[index].src;
+  document.getElementById("lightboxOverlay").style.display = "flex";
+}
+
+function closeLightbox() {
+  document.getElementById("lightboxOverlay").style.display = "none";
+}
+
+function showPrevImage() {
+  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  document.getElementById("lightboxImage").src = images[currentImageIndex].src;
+}
+
+function showNextImage() {
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  document.getElementById("lightboxImage").src = images[currentImageIndex].src;
+}
+</script>
 
 </body>
 </html>

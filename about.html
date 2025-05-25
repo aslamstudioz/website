@@ -8,16 +8,17 @@
 </head>
 <body>
   <header>
-    <div class="logo">Aslam Studioz</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <a href="index.html" class="logo">Aslam Studioz</a>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <nav id="navMenu">
+    <ul>
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
   <section class="about-section">
     <h1>About <span class="about-highlight">Me</span></h1>
@@ -44,5 +45,19 @@
     <a href="https://www.tiktok.com/@aslamstudioz" target="_blank" rel="noopener">TikTok</a>
   </div>
   </footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("open");
+  }
+
+  // Auto-close menu when a nav link is clicked
+  document.querySelectorAll("#navMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.getElementById("navMenu").classList.remove("open");
+    });
+  });
+</script>
 </body>
 </html>

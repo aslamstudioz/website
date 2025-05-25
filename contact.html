@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <div class="logo">Aslam Studioz</div>
+    <a href="index.html" class="logo">Aslam Studioz</a>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -42,5 +42,22 @@
     <a href="https://www.tiktok.com/@aslamstudioz" target="_blank" rel="noopener">TikTok</a>
   </div>
   </footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("open");
+  }
+
+  // Close nav menu when a link is clicked
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("#navMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("navMenu").classList.remove("open");
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
