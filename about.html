@@ -10,7 +10,7 @@
   <header>
   <a href="index.html" class="logo">Aslam Studioz</a>
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  <nav id="navMenu">
+  <nav id="navMenu" class="nav-closed">
     <ul>
       <li><a href="#" class="active">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
@@ -19,6 +19,7 @@
     </ul>
   </nav>
 </header>
+
 
   <section class="about-section">
     <h1>About <span class="about-highlight">Me</span></h1>
@@ -49,7 +50,7 @@
 <script>
   function toggleMenu() {
     const menu = document.getElementById("navMenu");
-    menu.classList.toggle("open");
+    menu.classList.toggle("show");
   }
 
   // Auto-close menu when a nav link is clicked

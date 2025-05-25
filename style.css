@@ -1,6 +1,6 @@
-/* Updated style.css for Aslam Studioz - Neon Green Logo Color Matched */
-
-/* Reset default styles */
+/* ========================== */
+/* 🌐 Global Reset & Defaults */
+/* ========================== */
 * {
   margin: 0;
   padding: 0;
@@ -10,15 +10,17 @@
 }
 
 body {
-  background: #0a0a0a;
-  color: #f1f1f1;
+  background: linear-gradient(145deg, #1e1e2f, #0f0f1a);
+  color: #e0e0e0;
   line-height: 1.6;
   padding-bottom: 3rem;
 }
 
-/* Header */
+/* ====================== */
+/* 🔝 Header & Navigation */
+/* ====================== */
 header {
-  background: #1a1a1a;
+  background: #111420;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,25 +33,12 @@ header {
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #39FF14;
-  letter-spacing: 2px;
-}
-
-/* Neon logo animation */
-@keyframes neonGlowPulse {
-  0%, 100% {
-    text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 20px #2ecc71, 0 0 30px #27ae60;
-  }
-  50% {
-    text-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #2ecc71, 0 0 40px #27ae60;
-  }
-}
-
-.logo {
   color: white;
+  letter-spacing: 2px;
   animation: neonGlowPulse 3s ease-in-out infinite;
 }
 
+/* Navigation styles */
 nav ul {
   list-style: none;
   display: flex;
@@ -65,10 +54,107 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-  color: #39FF14;
+  color: #e6e6e6;
 }
 
-/* Hero Section */
+/* ==================== */
+/* 📱 Mobile Navigation */
+/* ==================== */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#navMenu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background: #111;
+  padding: 1rem;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+#navMenu.show {
+  display: flex;
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+  }
+
+  nav {
+    display: none;
+    background: #111;
+    padding: 1rem 0;
+    border-top: 1px solid #333;
+  }
+
+  nav.open {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    padding: 1rem 0;
+    display: block;
+    color: #c0c0c0;
+  }
+}
+
+@media (min-width: 768px) {
+  #navMenu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  #navMenu ul {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+/* ==================== */
+/* 💡 Neon Animation */
+/* ==================== */
+@keyframes neonGlowPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px #e6e6e6, 0 0 10px #e6e6e6, 0 0 20px #ffffff, 0 0 30px #ffffff;
+  }
+  50% {
+    text-shadow: 0 0 10px #e6e6e6, 0 0 20px #e6e6e6, 0 0 30px #ffffff, 0 0 40px #ffffff;
+  }
+}
+
+/* ================= */
+/* 🦸 Hero Section */
+/* ================= */
 .hero {
   position: relative;
   height: 70vh;
@@ -96,7 +182,7 @@ nav ul li a.active {
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-shadow: 0 0 15px #39FF14;
+  text-shadow: 0 0 15px #e6e6e6;
 }
 
 .hero p {
@@ -104,7 +190,9 @@ nav ul li a.active {
   font-weight: 300;
 }
 
-/* Intro Section */
+/* ================== */
+/* 👤 Intro Section */
+/* ================== */
 .intro {
   display: flex;
   max-width: 900px;
@@ -117,20 +205,22 @@ nav ul li a.active {
 .profile-pic {
   width: 180px;
   border-radius: 50%;
-  border: 4px solid #39FF14;
+  border: 4px solid #e6e6e6;
 }
 
 .bio h2 {
   margin-bottom: 1rem;
-  color: #39FF14;
+  color: #e6e6e6;
 }
 
 .bio p {
   font-size: 1rem;
-  color: #ccc;
+  color: #c0c0c0;
 }
 
-/* Featured Work */
+/* ===================== */
+/* 🎯 Featured Gallery */
+/* ===================== */
 .featured {
   max-width: 900px;
   margin: 3rem auto 5rem;
@@ -141,14 +231,10 @@ nav ul li a.active {
 .featured h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #39FF14;
+  color: #e6e6e6;
 }
 
 .gallery-preview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-
   display: flex;
   justify-content: center;
   gap: 1.5rem;
@@ -160,46 +246,51 @@ nav ul li a.active {
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  box-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
 }
 
 .gallery-preview img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(57, 255, 20, 0.9);
+  box-shadow: 0 0 25px rgba(97, 97, 97, 0.9);
 }
 
-/* View More Button */
+/* ===================== */
+/* 🔘 View More Button */
+/* ===================== */
 .view-more {
   margin-top: 2rem;
 }
 
 .view-more .btn {
-  background: #39FF14;
+  background: #000000;
   color: white;
   padding: 0.8rem 2rem;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 700;
   animation: neonGlowPulse 4s ease-in-out infinite;
-  box-shadow: 0 0 8px #39FF14;
+  box-shadow: 0 0 8px #e6e6e6;
   transition: box-shadow 0.3s ease;
 }
 
 .view-more .btn:hover {
-  background: #2ecc11;
-  box-shadow: 0 0 20px #39FF14, 0 0 40px #2ecc71;
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 20px #e6e6e6, 0 0 40px #ffffff;
 }
 
-/* Gallery Filters */
+/* ========================= */
+/* 📁 Full Gallery Section */
+/* ========================= */
 .gallery-filter {
   text-align: center;
   margin: 3rem 1rem 1rem;
-  color: #39FF14;
+  color: #e6e6e6;
 }
 
 .filters button {
   background: transparent;
-  border: 2px solid #39FF14;
+  border: 2px solid #e6e6e6;
   color: white;
   padding: 0.6rem 1.3rem;
   margin: 0 0.5rem;
@@ -207,63 +298,68 @@ nav ul li a.active {
   border-radius: 25px;
   cursor: pointer;
   animation: neonGlowPulse 4s ease-in-out infinite;
-  box-shadow: 0 0 8px #39FF14;
+  box-shadow: 0 0 8px #e6e6e6;
   transition: all 0.3s ease;
 }
 
 .filters button:hover,
 .filters button:focus {
-  background: #39FF14;
+  background: #e6e6e6;
   color: #111;
-  box-shadow: 0 0 20px #39FF14, 0 0 40px #2ecc71;
+  box-shadow: 0 0 5px #e6e6e6, 0 0 0px #ffffff;
 }
 
 .gallery-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 15px;
 }
 
 .gallery-item {
-  flex: 1 1 280px;
-  max-width: 280px;
-  height: auto;
+  width: 100%;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
-  background: #1a1a1a;
+  background: #111420;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 .gallery-item img,
 .gallery-item video {
   width: 100%;
-  display: block;
   border-radius: 12px;
+  display: block;
 }
 
-/* Contact Section */
+.gallery-item:hover {
+  transform: scale(1.03);
+}
+
+/* ======================= */
+/* 📬 Contact Section */
+/* ======================= */
 .contact-section h1 {
   text-align: center;
   margin: 3rem 0 2rem;
   font-size: 2.8rem;
-  color: #39FF14;
-  text-shadow: 0 0 10px #39FF14;
+  color: #ffffff;
+  text-shadow: 0 0 10px #e6e6e6;
 }
 
 .contact-form {
   max-width: 450px;
   margin: 0 auto 4rem;
-  background: #1a1a1a;
+  background: #111420;
   padding: 2rem 2.5rem;
   border-radius: 15px;
-  box-shadow: 0 0 25px rgba(57, 255, 20, 0.7);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
 }
 
 .contact-form label {
   display: block;
   margin-bottom: 0.6rem;
-  color: #39FF14;
+  color: #e6e6e6;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -278,55 +374,53 @@ nav ul li a.active {
   background: #333;
   color: #eee;
   font-size: 1rem;
-  transition: background 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  background: #39FF14;
+  background: #e6e6e6;
   color: #111;
   outline: none;
-  box-shadow: 0 0 10px #39FF14;
+  box-shadow: 0 0 10px #e6e6e6;
 }
 
 .contact-form button {
-  display: block;
   width: 100%;
   padding: 1rem 0;
-  background: #39FF14;
-  color: white;
+  background: #ffffff;
+  color: black;
   font-weight: 700;
   font-size: 1.1rem;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   animation: neonGlowPulse 4s ease-in-out infinite;
-  box-shadow: 0 0 8px #39FF14;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 8px #e6e6e6;
 }
 
 .contact-form button:hover {
-  background: #2ecc11;
-  box-shadow: 0 0 20px #39FF14, 0 0 40px #2ecc71;
+  box-shadow: 0 0 20px #000000, 0 0 40px #000000;
 }
 
-/* About Page */
+/* ======================= */
+/* 📖 About Page */
+/* ======================= */
 .about-container {
   max-width: 800px;
   margin: 5rem auto;
   padding: 2rem;
   background: #1f1f1f;
   border-radius: 15px;
-  box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
   color: #eee;
 }
 
 .about-container h1 {
-  color: #39FF14;
+  color: #e6e6e6;
   text-align: center;
   margin-bottom: 1rem;
   font-weight: 800;
-  text-shadow: 0 0 8px #39FF14;
+  text-shadow: 0 0 8px #e6e6e6;
 }
 
 .about-container p {
@@ -338,16 +432,18 @@ nav ul li a.active {
 }
 
 .about-highlight {
-  color: #39FF14;
+  color: #e6e6e6;
   font-weight: 700;
 }
 
-/* Footer */
+/* ======================= */
+/* 🧯 Footer Section */
+/* ======================= */
 footer {
   text-align: center;
   padding: 1.5rem;
-  background: #1a1a1a;
-  color: #aaa;
+  background: #111420;
+  color: #b0b0b0;
   font-size: 0.9rem;
 }
 
@@ -359,69 +455,57 @@ footer {
 }
 
 .social-links a {
-  background: #39ff14;
+  background: #000000;
   color: #ffffff;
   padding: 0.6rem 1.2rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 600;
-  box-shadow: 0 0 5px #39ff14, 0 0 20px #39ff14;
+  box-shadow: 0 0 5px #ffffff, 0 0 20px #ffffff;
   transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-  background: #6aff4c;
-  box-shadow: 0 0 25px #39ff14, 0 0 50px #39ff14;
+  background: #ffffff;
+  color: black;
+  box-shadow: 0 0 25px #ffffff, 0 0 50px #ffffff;
   transform: translateY(-3px) scale(1.05);
 }
 
-/* ------------------------------ */
-/* 📱 Mobile Navigation Fix Starts Here */
-/* ------------------------------ */
-
-.menu-toggle {
+/* ======================= */
+/* 🌌 Lightbox Styles (photo view panradu)*/
+/* ======================= */
+.lightbox-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.9);
   display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  flex-direction: column;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 2rem;
   background: none;
+  color: #00d9ff;
   border: none;
-  color: #39FF14;
   cursor: pointer;
+  z-index: 10001;
+  padding: 1rem;
 }
 
-@media (max-width: 768px) {
-  
-  .menu-toggle {
-    display: block;
-    position: absolute;
-    right: 1.5rem;
-    top: 1rem;
-  }
-
-  nav {
-    display: none;
-    width: 100%;
-    background: #111;
-    padding: 1rem 0;
-    border-top: 1px solid #333;
-  }
-
-  nav.open {
-    display: block;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav ul li {
-    width: 100%;
-    text-align: center;
-  }
-
-  nav ul li a {
-    padding: 1rem 0;
-    display: block;
-    color: #ccc;
-  }
-}
+.lightbox-btn.prev { left: 5%; }
+.lightbox-btn.next { right: 5%; }

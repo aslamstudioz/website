@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+<header>
   <a href="index.html" class="logo">Aslam Studioz</a>
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  <nav id="navMenu">
+  <nav id="navMenu" class="nav-closed">
     <ul>
       <li><a href="#" class="active">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
@@ -19,6 +19,7 @@
     </ul>
   </nav>
 </header>
+
 
 
   <section class="hero">
@@ -58,7 +59,7 @@
 <script>
   function toggleMenu() {
     const menu = document.getElementById("navMenu");
-    menu.classList.toggle("open");
+    menu.classList.toggle("show");
   }
 
   // Auto-close menu when a nav link is clicked
@@ -94,7 +95,7 @@
   max-width: 90%;
   max-height: 80%;
   border-radius: 10px;
-  box-shadow: 0 0 30px rgba(57, 255, 20, 0.8);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }
 .lightbox-btn {
   position: absolute;
@@ -102,7 +103,7 @@
   transform: translateY(-50%);
   font-size: 2rem;
   background: none;
-  color: #39FF14;
+  color: #ffffff;
   border: none;
   cursor: pointer;
   z-index: 10001;
