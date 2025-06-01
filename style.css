@@ -33,10 +33,19 @@ header {
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: white;
   letter-spacing: 2px;
-  animation: neonGlowPulse 3s ease-in-out infinite;
+  background: linear-gradient(90deg, #c0c0c0, #e6e6e6, #f5f5f5, #e6e6e6, #c0c0c0);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text; /* for Safari & Chrome */
+  color: transparent;
+  -webkit-text-fill-color: transparent; /* for Safari & Chrome */
+  animation: shine 4s linear infinite;
+  /* fallback for Firefox */
+  -moz-background-clip: text;
 }
+
+
 
 /* Navigation styles */
 nav ul {
@@ -151,6 +160,16 @@ nav ul li a.active {
     text-shadow: 0 0 10px #e6e6e6, 0 0 20px #e6e6e6, 0 0 30px #ffffff, 0 0 40px #ffffff;
   }
 }
+
+@keyframes shine {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
 
 /* ================= */
 /* 🦸 Hero Section */
@@ -311,30 +330,43 @@ nav ul li a.active {
 
 .gallery-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-  padding: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 10px; /* small base row height */
+  gap: 16px;
 }
 
 .gallery-item {
-  width: 100%;
-  border-radius: 12px;
   overflow: hidden;
-  background: #111420;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #0c0c15; /* Dark background for the "box" */
+  padding: 0; /* Creates the space for the "box" around the image */
 }
 
 .gallery-item img,
 .gallery-item video {
   width: 100%;
-  border-radius: 12px;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
 .gallery-item:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ffffff, 0 0 50px #4b4b4b;
 }
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+/* Make each gallery item span rows based on image height */
+.gallery-item {
+  overflow: hidden;
+}
+
+/* JS to adjust grid row span based on image/video height */
 
 /* ======================= */
 /* 📬 Contact Section */
@@ -487,13 +519,6 @@ footer {
   flex-direction: column;
 }
 
-.lightbox-image {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
-}
-
 .lightbox-btn {
   position: absolute;
   top: 50%;
@@ -509,3 +534,93 @@ footer {
 
 .lightbox-btn.prev { left: 5%; }
 .lightbox-btn.next { right: 5%; }
+
+
+/* Pinterest-style gallery layout (Removed conflicting styles) */
+
+
+/* ============================== */
+/* Lightbox Content Layout Styles */
+/* ============================== */
+.lightbox-content {
+  display: flex;
+  align-items: center; /* Default alignment for PC (side-by-side) */
+  justify-content: center;
+  position: relative;
+  background-color: rgba(10, 10, 10, 0.92); /* Darker, slightly transparent background */
+  padding: 20px;
+  border-radius: 12px; /* Slightly more rounded */
+  max-width: 95vw;    /* Allow a bit more width */
+  max-height: 95vh;   /* Allow a bit more height */
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(255, 255, 255, 0.1); /* Softer shadow */
+  flex-direction: row; /* Default for PC: side by side */
+}
+
+.lightbox-media { /* Common styles for img and video */
+  flex-shrink: 1; /* Allow media to shrink if needed, but prioritize its size */
+  flex-grow: 1;   /* Allow media to grow if space is available */
+  object-fit: contain;
+  border-radius: 8px;
+  max-height: calc(90vh - 40px); /* Max height considering padding */
+  max-width: 65%; /* Max width for PC view, leaving space for details */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin-right: 20px; /* Space between media and details on PC */
+}
+
+.lightbox-details {
+  flex-shrink: 0; /* Details pane should not shrink */
+  width: 300px; /* Fixed width for details on PC */
+  color: #e0e0e0;
+  padding: 15px;
+  overflow-y: auto; /* Allow scrolling for details if content is long */
+  max-height: calc(90vh - 40px); /* Match media max height */
+  background-color: rgba(30, 30, 40, 0.85); /* Slightly different background for details pane */
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.lightbox-details h3 {
+  color: #58a6ff; /* Light blue for title */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.4em;
+}
+
+.lightbox-details p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.lightbox-details strong {
+  color: #a8b2c0; /* Lighter grey for labels */
+}
+
+/* Mobile Styles for Lightbox */
+@media (max-width: 768px) {
+  .lightbox-content {
+    flex-direction: column; /* Stack media and details vertically */
+    padding: 10px;
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .lightbox-media {
+    max-width: 100%; /* Media takes full width */
+    max-height: 65vh; /* Adjust max height for mobile */
+    margin-right: 0; /* No margin on the right */
+    margin-bottom: 15px; /* Space between media and details */
+  }
+
+  .lightbox-details {
+    width: 100%; /* Details take full width */
+    max-height: 25vh; /* Adjust max height for details */
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .lightbox-details h3 {
+    font-size: 1.2em;
+  }
+}

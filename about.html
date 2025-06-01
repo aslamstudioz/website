@@ -10,11 +10,11 @@
   <header>
   <a href="index.html" class="logo">Aslam Studioz</a>
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  <nav id="navMenu" class="nav-closed">
+  <nav id="navMenu">
     <ul>
-      <li><a href="#" class="active">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html" class="active">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -56,7 +56,7 @@
   // Auto-close menu when a nav link is clicked
   document.querySelectorAll("#navMenu a").forEach(link => {
     link.addEventListener("click", () => {
-      document.getElementById("navMenu").classList.remove("open");
+      document.getElementById("navMenu").classList.remove("show");
     });
   });
 </script>

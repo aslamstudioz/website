@@ -8,14 +8,29 @@
 </head>
 <body>
 
+
+  <!-- Lightbox Overlay -->
+<div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
+  <div class="lightbox-content" onclick="event.stopPropagation();">
+    <img id="lightboxImage" class="lightbox-media" src="" alt="Lightbox Image" style="display:none;" />
+    <video id="lightboxVideo" class="lightbox-media" controls style="display:none;"></video>
+    <div class="lightbox-details" id="lightboxInfo">
+      <!-- Details will be populated by JavaScript -->
+    </div>
+  </div>
+  <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrev()">&#10094;</button>
+  <button class="lightbox-btn next" onclick="event.stopPropagation(); showNext()">&#10095;</button>
+</div>
+
+
   <!-- Header -->
   <header>
     <a href="index.html" class="logo">Aslam Studioz</a>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <nav id="navMenu" class="nav-closed">
+    <nav id="navMenu">
       <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -36,33 +51,41 @@
 
   <!-- Gallery Images -->
   <section class="gallery-container">
-
     <div class="gallery-item trip">
-      <img src="images/trip1.jpg" alt="Trip Shot 1" />
+      <img src="images/trip1.jpg" alt="Trip Shot 1"
+           data-title="Trip to Ella"
+           data-date="2024-03-10"
+           data-location="Badulla District of Uva Province, Sri Lanka"
+           data-photographer="Friend's"
+           data-camera="i Phone 16pro max" />
     </div>
-
     <div class="gallery-item nature">
-      <img src="images/nature1.jpg" alt="Nature Shot 1" />
+      <img src="images/nature1.jpg" alt="Nature Shot 1"
+           data-title="Serene Sunset"
+           data-date="2024-04-22"
+           data-location="Ella, Sri Lanka"
+           data-photographer="Afeerdeen"
+           data-camera="Nikon Z6 II" />
     </div>
-
     <div class="gallery-item weddings">
-      <img src="images/wedding1.jpg" alt="Wedding Shot 1" />
+      <img src="images/wedding1.jpg" alt="Wedding Shot 1"
+           data-title="Wedding Bliss"
+           data-date="2024-05-01"
+           data-location="Colombo, Sri Lanka"
+           data-photographer="Aslam Studioz"
+           data-camera="Sony A7 IV" />
     </div>
-
     <div class="gallery-item videos">
       <video controls>
         <source src="videos/video1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
-
-    <!-- More wedding photos -->
-    <div class="gallery-item weddings"><img src="images/wedding2.jpg" alt="Wedding Shot 2" /></div>
-    <div class="gallery-item weddings"><img src="images/wedding3.jpg" alt="Wedding Shot 3" /></div>
-    <div class="gallery-item weddings"><img src="images/wedding4.jpg" alt="Wedding Shot 4" /></div>
-    <div class="gallery-item weddings"><img src="images/wedding5.jpg" alt="Wedding Shot 5" /></div>
-    <div class="gallery-item trip"><img src="images/trip2.jpg" alt="Trip Shot 2" /></div>
-
+    <div class="gallery-item weddings"><img src="images/wedding2.jpg" alt="Wedding Shot 2" data-title="Joyful Moments" data-date="2024-05-05" data-location="Kandy, Sri Lanka" data-photographer="Aslam Studioz" data-camera="Canon EOS R5" /></div>
+    <div class="gallery-item weddings"><img src="images/wedding3.jpg" alt="Wedding Shot 3" data-title="Eternal Love" data-date="2024-05-12" data-location="Galle, Sri Lanka" data-photographer="Aslam Studioz" data-camera="Nikon D850" /></div>
+    <div class="gallery-item weddings"><img src="images/wedding4.jpg" alt="Wedding Shot 4" data-title="Celebration" data-date="2024-05-18" data-location="Negombo, Sri Lanka" data-photographer="Aslam Studioz" data-camera="Sony A9 II" /></div>
+    <div class="gallery-item weddings"><img src="images/wedding5.jpg" alt="Wedding Shot 5" data-title="New Beginnings" data-date="2024-05-25" data-location="Mirissa, Sri Lanka" data-photographer="Aslam Studioz" data-camera="Fujifilm GFX 100S" /></div>
+    <div class="gallery-item trip"><img src="images/trip2.jpg" alt="Trip Shot 2" data-title="Mountain View" data-date="2024-06-01" data-location="Nuwara Eliya, Sri Lanka" data-photographer="Aslam" data-camera="Canon EOS R6" /></div>
   </section>
 
   <!-- Footer -->
@@ -74,69 +97,6 @@
     </div>
   </footer>
 
-  <!-- Lightbox Overlay -->
-  <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox()">
-    <img id="lightboxImage" class="lightbox-image" src="" alt="Full View" />
-    <button class="lightbox-btn prev" onclick="event.stopPropagation(); showPrevImage()">&#10094;</button>
-    <button class="lightbox-btn next" onclick="event.stopPropagation(); showNextImage()">&#10095;</button>
-  </div>
-
-  <!-- JavaScript -->
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("navMenu");
-      menu.classList.toggle("show");
-    }
-
-    document.querySelectorAll("#navMenu a").forEach(link => {
-      link.addEventListener("click", () => {
-        document.getElementById("navMenu").classList.remove("open");
-      });
-    });
-
-    // Lightbox functionality
-    let currentImageIndex = 0;
-    let images = [];
-
-    document.addEventListener("DOMContentLoaded", () => {
-      images = Array.from(document.querySelectorAll(".gallery-container img"));
-      images.forEach((img, index) => {
-        img.addEventListener("click", () => openLightbox(index));
-      });
-    });
-
-    function openLightbox(index) {
-      currentImageIndex = index;
-      document.getElementById("lightboxImage").src = images[index].src;
-      document.getElementById("lightboxOverlay").style.display = "flex";
-    }
-
-    function closeLightbox() {
-      document.getElementById("lightboxOverlay").style.display = "none";
-    }
-
-    function showPrevImage() {
-      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-      document.getElementById("lightboxImage").src = images[currentImageIndex].src;
-    }
-
-    function showNextImage() {
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      document.getElementById("lightboxImage").src = images[currentImageIndex].src;
-    }
-
-    // Optional: Gallery filter logic
-    function filterGallery(category) {
-      const items = document.querySelectorAll(".gallery-item");
-      items.forEach(item => {
-        if (category === "all" || item.classList.contains(category)) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    }
-  </script>
-
+<script src="gallery.js"></script>
 </body>
 </html>

@@ -10,9 +10,9 @@
 <header>
   <a href="index.html" class="logo">Aslam Studioz</a>
   <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  <nav id="navMenu" class="nav-closed">
+  <nav id="navMenu">
     <ul>
-      <li><a href="#" class="active">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -65,7 +65,7 @@
   // Auto-close menu when a nav link is clicked
   document.querySelectorAll("#navMenu a").forEach(link => {
     link.addEventListener("click", () => {
-      document.getElementById("navMenu").classList.remove("open");
+      document.getElementById("navMenu").classList.remove("show");
     });
   });
 </script>
@@ -113,37 +113,8 @@
 .lightbox-btn.next { right: 5%; }
 </style>
 
-<script>
-let currentImageIndex = 0;
-let images = [];
+<script src="index.js"></script>
 
-document.addEventListener("DOMContentLoaded", () => {
-  images = Array.from(document.querySelectorAll(".gallery-preview img, .gallery-container img"));
-  images.forEach((img, index) => {
-    img.addEventListener("click", () => openLightbox(index));
-  });
-});
-
-function openLightbox(index) {
-  currentImageIndex = index;
-  document.getElementById("lightboxImage").src = images[index].src;
-  document.getElementById("lightboxOverlay").style.display = "flex";
-}
-
-function closeLightbox() {
-  document.getElementById("lightboxOverlay").style.display = "none";
-}
-
-function showPrevImage() {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  document.getElementById("lightboxImage").src = images[currentImageIndex].src;
-}
-
-function showNextImage() {
-  currentImageIndex = (currentImageIndex + 1) % images.length;
-  document.getElementById("lightboxImage").src = images[currentImageIndex].src;
-}
-</script>
 
 </body>
 </html>
