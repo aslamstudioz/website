@@ -342,7 +342,7 @@ nav ul li a.active {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: #0c0c15; /* Dark background for the "box" */
-  padding: 18; /* Creates the space for the "box" around the image */
+  padding: 0px; /* Creates the space for the "box" around the image */
 }
 
 .gallery-item img,
@@ -622,5 +622,164 @@ footer {
 
   .lightbox-details h3 {
     font-size: 1.2em;
+  }
+}
+
+/* ===================================== */
+/* 📱 Additional Mobile Responsiveness */
+/* ===================================== */
+
+@media (max-width: 768px) {
+  /* Hero Section Adjustments */
+  .hero {
+    height: 60vh; /* Reduce height on mobile */
+  }
+  .hero h1 {
+    font-size: 2.2rem; /* Smaller hero title */
+  }
+  .hero p {
+    font-size: 1rem; /* Smaller hero paragraph */
+  }
+
+  /* Intro Section Adjustments */
+  .intro {
+    flex-direction: column; /* Stack profile pic and bio */
+    text-align: center;
+    margin: 2rem auto;
+  }
+  .profile-pic {
+    width: 120px; /* Smaller profile picture */
+    margin-bottom: 1rem;
+  }
+
+  /* Featured Gallery Adjustments */
+  .featured h2 {
+    font-size: 2rem; /* Smaller heading */
+  }
+  .gallery-preview {
+    flex-direction: column; /* Stack preview images */
+    align-items: center;
+    gap: 1rem;
+  }
+  .gallery-preview img {
+    width: 80%; /* Make images wider, but not full width */
+    max-width: 300px; /* Max width for consistency */
+  }
+
+  /* Filter Buttons Adjustments */
+  .filters button {
+    padding: 0.5rem 1rem;
+    margin: 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  /* Contact Form Adjustments */
+  .contact-form {
+    padding: 1.5rem;
+    margin: 0 1rem 3rem; /* Add side margins */
+  }
+  .contact-section h1 {
+    font-size: 2.2rem;
+  }
+
+  /* About Page Adjustments */
+  .about-container {
+    margin: 3rem auto;
+    padding: 1.5rem;
+  }
+  .about-container h1 {
+    font-size: 2rem;
+  }
+  .about-container p {
+    font-size: 1rem;
+  }
+
+  /* Footer Social Links */
+  .social-links {
+    gap: 1rem;
+  }
+  .social-links a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Pinterest-style Gallery for Mobile (e.g., screens smaller than 600px) */
+@media (max-width: 600px) {
+  .gallery-container {
+    display: block; /* Override grid display */
+    column-count: 2; /* Number of columns */
+    column-gap: 10px; /* Space between columns */
+    padding: 10px;
+  }
+
+  .gallery-item {
+    display: inline-block; /* Allow items to flow into columns */
+    width: 100%; /* Full width within its column */
+    margin-bottom: 10px; /* Space below each item */
+    break-inside: avoid-column; /* Prevent items from breaking across columns */
+    padding: 8px; /* Adjust padding for smaller items */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+  }
+
+  .gallery-item img,
+  .gallery-item video {
+    border-radius: 8px; /* Consistent rounding */
+  }
+
+  /* Adjustments for even smaller screens if needed */
+  .featured .gallery-preview img {
+    width: 90%;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+  .menu-toggle {
+    font-size: 1.3rem;
+    top: 0.8rem;
+    right: 1rem;
+  }
+  header {
+    padding: 0.8rem 1rem;
+  }
+  #navMenu {
+    top: 50px; /* Adjust based on new header height */
+  }
+
+  .gallery-container {
+    column-count: 1; /* Single column for very small screens */
+  }
+  .featured h2 {
+    font-size: 1.8rem;
+  }
+  .contact-section h1 {
+    font-size: 1.8rem;
+  }
+  .about-container h1 {
+    font-size: 1.8rem;
+  }
+  .filters button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    margin: 0.2rem;
+  }
+  .view-more .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
   }
 }
